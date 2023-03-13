@@ -10,11 +10,11 @@ pool:
   name: 'ubuntu-agent'
   vmImage: ubuntu-latest
 
+variables:
+  environment: <name_of_environment>
+  collection: <name_of_collection>
+  
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - name: Run Postman Collection
+    script:
+      pm run $collection --environment $environment
